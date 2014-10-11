@@ -1,15 +1,23 @@
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 
-public class PlayerScoreBoard : MonoBehaviour, IScoreBoard
+public class PlayerScoreBoard : MonoBehaviour
 {
-	public Text text;
 	private int score;
 
-	void Update()
+	void OnGUI()
 	{
-		text.text = "Score: " + score;
+		GUI.Label (new Rect (600, 0, 200, 200), "Score: " + score);
+	}
+
+	void OnEnable()
+	{
+		EventManager.handleEvent += new EventManager.HandleEvent (addScore);
+	}
+
+	void OnDisable()
+	{
+		EventManager.handleEvent -= new EventManager.HandleEvent (addScore);
 	}
 
 	public void addScore()

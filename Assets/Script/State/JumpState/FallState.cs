@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FallState : PlayerState
 {
-	public FallState (GameObject player, StateMachine fsm)
+	public FallState (GameObject player, IStateTransition stateTransition)
 	{
 		Player = player;
-		FSM = fsm;
+		StateTransition = stateTransition;
 	}
 
 	public override void enter()
@@ -19,7 +19,7 @@ public class FallState : PlayerState
 	{
 		if (Player.rigidbody2D.velocity.y == 0) 
 		{
-			FSM.switchState("run");
+			StateTransition.OnStateTransition("run");
 		}
 	}
 }

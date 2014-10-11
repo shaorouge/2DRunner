@@ -5,10 +5,10 @@ public class JumpState : PlayerState
 {
 	public Vector3 Force{ get; private set; }
 
-	public JumpState (GameObject player, StateMachine fsm, Vector3 force)
+	public JumpState (GameObject player, IStateTransition stateTransition, Vector3 force)
 	{
 		Player = player;
-		FSM = fsm;
+		StateTransition = stateTransition;
 		Force = force;
 	}
 
@@ -22,7 +22,7 @@ public class JumpState : PlayerState
 	{
 		if(Player.rigidbody2D.velocity.y > -0.2 && Player.rigidbody2D.velocity.y < 0.2)
 		{
-			FSM.switchState("top");
+			StateTransition.OnStateTransition("top");
 		}
 	}
 }

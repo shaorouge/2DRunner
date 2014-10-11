@@ -2,57 +2,36 @@
 using System;
 using UnityEngine;
 
-public class AdjustState : IState
+public class BackwardState : RunState
 {
-	public StateMachine FSM{ get; private set;}
-	public GameObject Player{ get; private set;}
-
-	private float rightPosX; 			//The position the player should be when he's running
 	private float speed;
 
-	public AdjustState (GameObject player, StateMachine fsm, float posX, float speed)
+	public BackwardState (GameObject player,
+	                    IStateTransition stateTransition,
+	                    Behaviour behaviour,
+	                    float speed) : base(player, stateTransition, behaviour)
 	{
-		Player = player;
-		FSM = fsm;
-		rightPosX = posX;
 		this.speed = speed;
 	}
 
-	public void enter()
+	public override void update()
 	{
-
-	}
-
-	public void exit()
-	{
-
-	}
-
-	public void update()
-	{
-		if(Input.GetKey ("up"))
+		if(handleInput ())
 		{
-			FSM.switchState("jump");
+			return;
 		}
-		else if(Input.GetKey ("down"))
-		{
-			FSM.switchState("slip");
-		}
-		else if (Player.transform.position.x > rightPosX) 
+		
+		if(Player.transform.position.x > PlayerBehaviour.getThreshold("pos_x"))
 		{
 			Player.rigidbody2D.AddForce(Vector3.left * speed);
 		}
-		else if(Player.transform.position.x < rightPosX)
+		else
 		{
-			Player.rigidbody2D.AddForce(Vector3.right * speed);
-		}
-		else if(Player.transform.position.x == rightPosX)
-		{
-			Player.rigidbody2D.velocity = Vector2.zero;
-			FSM.switchState("run");
+			StateTransition.OnStateTransition("run");
 		}
 	}
 }
+
 
 
 

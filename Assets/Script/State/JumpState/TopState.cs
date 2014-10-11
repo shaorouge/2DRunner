@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TopState : PlayerState
 {
-	public TopState (GameObject player, StateMachine fsm)
+	public TopState (GameObject player, IStateTransition stateTransition)
 	{
 		Player = player;
-		FSM = fsm;
+		StateTransition = stateTransition;
 	}
 
 	public override void enter()
@@ -19,7 +19,7 @@ public class TopState : PlayerState
 	{
 		if (Player.rigidbody2D.velocity.y <= -0.2) 
 		{
-			FSM.switchState("fall");		
+			StateTransition.OnStateTransition("fall");		
 		}
 	}
 }

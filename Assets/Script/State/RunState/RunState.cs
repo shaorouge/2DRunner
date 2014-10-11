@@ -6,10 +6,10 @@ public class RunState : PlayerState
 {
 	protected float rightPosX; 			//The position the player should be when he's running
 
-	public RunState (GameObject player, StateMachine fsm, Behaviour behaviour)
+	public RunState (GameObject player, IStateTransition stateTransition, Behaviour behaviour)
 	{
 		Player = player;
-		FSM = fsm;
+		StateTransition = stateTransition;
 		PlayerBehaviour = behaviour;
 	}
 
@@ -22,12 +22,12 @@ public class RunState : PlayerState
 	{
 		if(Input.GetKey ("up"))
 		{
-			FSM.switchState("jump");
+			StateTransition.OnStateTransition("jump");
 			return true;
 		}
 		else if(Input.GetKey ("down"))
 		{
-			FSM.switchState("slip");
+			StateTransition.OnStateTransition("slip");
 			return true;
 		}
 
@@ -43,11 +43,11 @@ public class RunState : PlayerState
 
 		if(Player.transform.position.x > PlayerBehaviour.getThreshold("pos_x"))
 		{
-			FSM.switchState("backward");
+			StateTransition.OnStateTransition("backward");
 		}
 		else if(Player.transform.position.x < PlayerBehaviour.getThreshold("pos_x"))
 		{
-			FSM.switchState("forward");
+			StateTransition.OnStateTransition("forward");
 		}
 	}
 }

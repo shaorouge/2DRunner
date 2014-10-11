@@ -19,7 +19,7 @@ public class Floor : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		offsetX = Mathf.Repeat (offsetX + speed, sizeX);
+		offsetX = Mathf.Repeat (speed * Time.time, sizeX);
 		transform.position = startPos + Vector3.left * offsetX;
 	}
 }

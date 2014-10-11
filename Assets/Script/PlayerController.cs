@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IStateTransition
 {
 	public StateMachine FSM{ get; set;}
 
@@ -15,5 +15,10 @@ public class PlayerController : MonoBehaviour
 	void Update () 
 	{
 		FSM.CurrentState.update ();
+	}
+
+	public void OnStateTransition(string name)
+	{
+		FSM.switchState (name);
 	}
 }

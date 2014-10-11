@@ -11,12 +11,12 @@ public class SlipState : PlayerState
 
 	private BoxCollider2D bx;								//The box collider
 
-	public SlipState (GameObject player, StateMachine fsm,
+	public SlipState (GameObject player, IStateTransition stateTransition,
 	                  Vector2 standSize, Vector2 standCenter,
 	                  Vector2 slipSize, Vector2 slipCenter)
 	{
 		Player = player;
-		FSM = fsm;
+		StateTransition = stateTransition;
 
 		StandSize = standSize;
 		StandCenter = standCenter;
@@ -43,7 +43,7 @@ public class SlipState : PlayerState
 	{
 		if (!Input.GetKey ("down")) 
 		{
-			FSM.switchState("run");
+			StateTransition.OnStateTransition("run");
 		}
 	}
 }

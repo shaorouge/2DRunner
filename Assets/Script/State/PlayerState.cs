@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerState : IState
 {
-	public StateMachine FSM{ get; protected set;}
+	public IStateTransition StateTransition {get; set;}
 	public GameObject Player{ get; protected set;}
 	public Behaviour PlayerBehaviour{ get; protected set; }
 

@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{E113BB39-8C5C-E852-A9EA-C6546C3ED52D}</ProjectGuid>
+	<ProjectGuid>{73EC1640-9B4A-50F4-3194-DBB80D9AEAD0}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_4;UNITY_4_5;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_4;UNITY_4_5;UNITY_WEBPLAYER;WEBPLUG;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,23 +46,35 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Column.cs" />
-     <Compile Include="Assets\Script\ColumnsPool.cs" />
-     <Compile Include="Assets\Script\Floor.cs" />
+     <Compile Include="Assets\Script\Background\Column.cs" />
+     <Compile Include="Assets\Script\Background\ColumnsPool.cs" />
+     <Compile Include="Assets\Script\Background\Floor.cs" />
+     <Compile Include="Assets\Script\Background\GameOverColumn.cs" />
+     <Compile Include="Assets\Script\Background\background.cs" />
+     <Compile Include="Assets\Script\Event\EventManager.cs" />
      <Compile Include="Assets\Script\GameObjectFactory.cs" />
      <Compile Include="Assets\Script\Initialization.cs" />
      <Compile Include="Assets\Script\PlayerController.cs" />
-     <Compile Include="Assets\Script\State\FallState.cs" />
-     <Compile Include="Assets\Script\State\HitState.cs" />
+     <Compile Include="Assets\Script\State\Behaviour.cs" />
      <Compile Include="Assets\Script\State\IState.cs" />
-     <Compile Include="Assets\Script\State\JumpState.cs" />
-     <Compile Include="Assets\Script\State\RunState.cs" />
-     <Compile Include="Assets\Script\State\SlipState.cs" />
+     <Compile Include="Assets\Script\State\IStateTransition.cs" />
+     <Compile Include="Assets\Script\State\JumpState\FallState.cs" />
+     <Compile Include="Assets\Script\State\JumpState\JumpState.cs" />
+     <Compile Include="Assets\Script\State\JumpState\TopState.cs" />
+     <Compile Include="Assets\Script\State\OtherState\HitState.cs" />
+     <Compile Include="Assets\Script\State\OtherState\SlipState.cs" />
+     <Compile Include="Assets\Script\State\PlayerState.cs" />
+     <Compile Include="Assets\Script\State\RunState\BackwardState.cs" />
+     <Compile Include="Assets\Script\State\RunState\ForwardState.cs" />
+     <Compile Include="Assets\Script\State\RunState\RunState.cs" />
      <Compile Include="Assets\Script\State\StateMachine.cs" />
-     <Compile Include="Assets\Script\State\TopState.cs" />
-     <Compile Include="Assets\Script\TEst.cs" />
+     <Compile Include="Assets\Script\Test\GUITest.cs" />
+     <Compile Include="Assets\Script\Test\TEst.cs" />
+     <Compile Include="Assets\Script\UI\FinalScore.cs" />
+     <Compile Include="Assets\Script\UI\PlayerScoreBoard.cs" />
+     <Compile Include="Assets\Script\UI\Ready.cs" />
+     <Compile Include="Assets\Script\UI\StartTitle.cs" />
      <Compile Include="Assets\Script\XmlParser.cs" />
-     <Compile Include="Assets\Script\background.cs" />
      <None Include="Assets\Resources\XmlData\column.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

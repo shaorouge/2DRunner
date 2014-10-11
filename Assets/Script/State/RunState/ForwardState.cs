@@ -2,14 +2,14 @@
 using System;
 using UnityEngine;
 
-public class MoveForward : RunState
+public class ForwardState : RunState
 {
 	private float speed;
 
-	public MoveForward (GameObject player, 
-	                    StateMachine fsm, 
+	public ForwardState (GameObject player, 
+						IStateTransition stateTransition,
 	                    Behaviour behaviour,
-	                    float speed) : base(player, fsm, behaviour)
+	                    float speed) : base(player, stateTransition, behaviour)
 	{
 		this.speed = speed;
 	}
@@ -27,7 +27,7 @@ public class MoveForward : RunState
 		}
 		else
 		{
-			FSM.switchState("run");
+			StateTransition.OnStateTransition("run");
 		}
 	}
 }
